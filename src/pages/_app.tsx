@@ -5,6 +5,16 @@ import { SessionProvider } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
 import "../styles/globals.css";
+import { ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#fcba03",
+    },
+  },
+});
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,7 +22,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </SessionProvider>
   );
 };
