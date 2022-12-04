@@ -54,7 +54,7 @@ const AddBook: React.FC = () => {
       ...data,
     });
   return (
-    <FormControl onSubmit={handleSubmit(onSubmit)}>
+    <FormControl onSubmit={handleSubmit(onSubmit)} component={"form"}>
       <Controller
         name="title"
         control={control}
@@ -76,7 +76,7 @@ const AddBook: React.FC = () => {
           <TextField margin="normal" label="isbn" {...field} />
         )}
       />
-      <Button type="submit" />
+      <Button type="submit">Add Book</Button>
     </FormControl>
   );
 };
